@@ -52,6 +52,10 @@ ifeq ($(TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS),true)
     LOCAL_CFLAGS += -DFORCE_HWC_COPY_FOR_VIRTUAL_DISPLAYS
 endif
 
+ifeq ($(BOARD_EGL_NEEDS_LEGACY_FB),true)
+	LOCAL_CFLAGS += -DBOARD_EGL_NEEDS_LEGACY_FB
+endif
+
 ifneq ($(NUM_FRAMEBUFFER_SURFACE_BUFFERS),)
   LOCAL_CFLAGS += -DNUM_FRAMEBUFFER_SURFACE_BUFFERS=$(NUM_FRAMEBUFFER_SURFACE_BUFFERS)
 endif
@@ -62,6 +66,10 @@ endif
 
 ifeq ($(BOARD_USE_MHEAP_SCREENSHOT),true)
     LOCAL_CFLAGS += -DUSE_MHEAP_SCREENSHOT
+endif
+
+ifeq ($(BOARD_NEEDS_OLD_HWC_API),true)
+    LOCAL_CFLAGS += -DOLD_HWC_API
 endif
 
 # See build/target/board/generic/BoardConfig.mk for a description of this setting.
